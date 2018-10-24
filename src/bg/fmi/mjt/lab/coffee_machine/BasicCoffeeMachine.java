@@ -4,14 +4,31 @@ import bg.fmi.mjt.lab.coffee_machine.container.Container;
 import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
 
 public class BasicCoffeeMachine implements CoffeeMachine{
-
-    public BasicCoffeeMachine()  {
-        // TODO Auto-generated constructor stub
+   
+    private boolean autoRefill = false;
+    private double water;
+    private double coffee;
+    //doesn's supports cappucino and mochaccino 
+    
+    public BasicCoffeeMachine(){
+        
+    }
+    public BasicCoffeeMachine(double water, double coffee)  {
+        this.water = water;
+        this.coffee = coffee;
     }
 
     @Override
     public Product brew(Beverage beverage) {
-        // TODO Auto-generated method stub
+      //for each beverage(water coffee milk cacao) - try to make one as checking supplies,
+      //if available - create new Product with stats from supplies
+        try {
+            getSupplies();
+            Product p = new Product();
+          
+        } catch (Exception e){
+            
+        }
         return null;
     }
 
@@ -23,7 +40,9 @@ public class BasicCoffeeMachine implements CoffeeMachine{
 
     @Override
     public void refill() {
-        // TODO Auto-generated method stub
+        if (autoRefill) {
+            this.water = water; // BASIC_CONTAINER_INITIAL_WATER
+        }
         
     }
 

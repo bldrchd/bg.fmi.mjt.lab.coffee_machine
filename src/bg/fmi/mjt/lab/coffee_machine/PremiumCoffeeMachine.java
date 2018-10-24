@@ -4,7 +4,7 @@ import bg.fmi.mjt.lab.coffee_machine.container.Container;
 import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
 
 public class PremiumCoffeeMachine implements CoffeeMachine {
-
+    boolean autoRefill = true;
     /**
     * @param autoRefill - if true, it will automatically refill the container
     * if there are not enough ingredients to make the coffee drink

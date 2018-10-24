@@ -1,13 +1,19 @@
 package bg.fmi.mjt.lab.coffee_machine.container;
 
-public class BasicContainer extends Container{
-    int initialWater = 600;
-    int initialCoffee = 1000;
-    int initialMilk = 0;
-    int initialCacao = 0;
+public class BasicContainer extends Container {
+    
+    private static final double BASIC_CONTAINER_INITIAL_WATER = 600;
+    private static final double BASIC_CONTAINER_INITIAL_COFFEE = 600;
+    double water;
+    double coffee;
     
     public BasicContainer() {
-        // TODO Auto-generated constructor stub
+
+        
+    }
+    public BasicContainer(double wat, double cof){
+        this.water = BASIC_CONTAINER_INITIAL_WATER - wat;
+        this.coffee = BASIC_CONTAINER_INITIAL_COFFEE - cof;
     }
 
     @Override

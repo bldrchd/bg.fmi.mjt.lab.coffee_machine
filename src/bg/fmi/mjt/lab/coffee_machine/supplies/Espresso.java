@@ -1,38 +1,38 @@
 package bg.fmi.mjt.lab.coffee_machine.supplies;
 
 public class Espresso implements Beverage {
-
-    public Espresso() {
-        // TODO Auto-generated constructor stub
+    
+    private String name = "Espresso";
+    private int coffee = 10;
+    private int water = 30;
+    
+    public Espresso(int coffee, int water) {
+        this.coffee = coffee;
+        this.water = water;
     }
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.name;
     }
 
     @Override
     public double getMilk() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public double getCoffee() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.coffee;
     }
 
     @Override
     public double getWater() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.water;
     }
 
     @Override
     public double getCacao() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
