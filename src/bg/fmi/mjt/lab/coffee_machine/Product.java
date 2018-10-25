@@ -25,6 +25,9 @@ public class Product {
     };
 
     public Product() {
+        if (supported){
+            getLuck();
+        }
     }
 
     public Product(Beverage beverage, boolean supported, int quantity){
