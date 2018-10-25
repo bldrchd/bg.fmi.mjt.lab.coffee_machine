@@ -9,7 +9,7 @@ public class BasicCoffeeMachine implements CoffeeMachine {
     private boolean supportedLuck = false;
     private double availableWater;
     private double availableCoffee;
-    private int espressoQantity = 0;
+    private int espressoQuantity = 0;
     BasicContainer bc;
 
     public BasicCoffeeMachine() {
@@ -29,8 +29,8 @@ public class BasicCoffeeMachine implements CoffeeMachine {
                 } else {
                     bc.useSupplies(beverage);
                     if (beverage.getName() == "Espresso") {
-                        espressoQantity += 1;
-                        p = new Product(beverage, supportedLuck, espressoQantity);
+                        espressoQuantity += 1;
+                        p = new Product(beverage, supportedLuck, espressoQuantity);
                     }
                 }
             } else {return null;}

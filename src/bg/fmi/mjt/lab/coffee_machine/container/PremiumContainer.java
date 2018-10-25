@@ -41,7 +41,13 @@ public class PremiumContainer extends Container{
         this.coffee = this.coffee - beverage.getCoffee();
         this.milk = this.milk - beverage.getMilk();
         this.cacao = this.cacao - beverage.getCacao();
-        
+    }
+    
+    public void refill(){
+        this.water = PREMIUM_CONTAINER_INITIAL_WATER;
+        this.coffee = PREMIUM_CONTAINER_INITIAL_COFFEE;
+        this.milk = PREMIUM_CONTAINER_INITIAL_MILK;
+        this.cacao = PREMIUM_CONTAINER_INITIAL_CACAO;
     }
 
 }
