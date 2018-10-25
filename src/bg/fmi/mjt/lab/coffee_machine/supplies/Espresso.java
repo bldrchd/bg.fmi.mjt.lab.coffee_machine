@@ -6,9 +6,7 @@ public class Espresso implements Beverage {
     private int coffee = 10;
     private int water = 30;
     
-    public Espresso(int coffee, int water) {
-        this.coffee = coffee;
-        this.water = water;
+    public Espresso(){   
     }
 
     @Override

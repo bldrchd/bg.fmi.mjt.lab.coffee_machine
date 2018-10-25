@@ -2,34 +2,63 @@ package bg.fmi.mjt.lab.coffee_machine;
 
 import java.util.ArrayList;
 
+import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
+
 public class Product {
-    private ArrayList<String> luck = new ArrayList<String>() {{
-         add("If at first you don't succeed call it version 1.0.");
-         add("Today you will make magic happen!");
-         add("Have you tried turning it off and on again?");
-         add("Life would be much more easier if you had the source code.");}};
+
+    private String name;
+    private int quantity;
+    private boolean supported = false;
+
+    private ArrayList<String> lucks = new ArrayList<String>() {
+        {
+            add("If at first you don't succeed call it version 1.0.");
+            add("Today you will make magic happen!");
+            add("Have you tried turning it off and on again?");
+            add("Life would be much more easier if you had the source code.");
+        }
+    };
 
     public Product() {
-        // TODO Auto-generated constructor stub
     }
-    public String getName(){
-        return null;}
+
+    public Product(Beverage beverage, boolean supported, int quantity){
+        setName(beverage.getName());
+    }
     
-    public int getQuantity(){
-        return 0;}
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String beverageName){
+        this.name = beverageName;
+    }
     
-    public String getLuck(){
-        int i = 0 ;
-        for (;;){
-            this.luck.get(i);
-            i++;
-            if (i == this.luck.size()) { 
-                i = 0;
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    public String getLuck() {
+        String luck = null;
+        if (supported) {
+            for (int i = 0; i <= lucks.size(); i++) {
+                if (i == lucks.size()) {
+                    i = 0;
+                    return luck = lucks.get(i);
+                }
+                return luck = lucks.get(i);
             }
         }
-   }
-    
-    public void setLuck(){
-        
+        return luck;
+    }
+
+    public boolean getSupportLuck() {
+        return supported;
+    }
+
+    public void setSupportedLuck(boolean supported) {
+        this.supported = supported;
+    }
+    public void setQuantity(int machineQuantity){
+        this.quantity = machineQuantity;
     }
 }

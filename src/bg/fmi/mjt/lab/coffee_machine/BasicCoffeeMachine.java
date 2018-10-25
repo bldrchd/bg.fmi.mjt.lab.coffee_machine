@@ -1,49 +1,54 @@
 package bg.fmi.mjt.lab.coffee_machine;
 
+import bg.fmi.mjt.lab.coffee_machine.container.BasicContainer;
 import bg.fmi.mjt.lab.coffee_machine.container.Container;
 import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
 
-public class BasicCoffeeMachine implements CoffeeMachine{
-   
-    private boolean autoRefill = false;
-    private double water;
-    private double coffee;
-    //doesn's supports cappucino and mochaccino 
-    
-    public BasicCoffeeMachine(){
-        
-    }
-    public BasicCoffeeMachine(double water, double coffee)  {
-        this.water = water;
-        this.coffee = coffee;
+public class BasicCoffeeMachine implements CoffeeMachine {
+
+    private boolean supportedLuck = false;
+    private double availableWater;
+    private double availableCoffee;
+    private int espressoQantity = 0;
+    BasicContainer bc;
+
+    public BasicCoffeeMachine() {
+        bc = new BasicContainer();
     }
 
     @Override
     public Product brew(Beverage beverage) {
-      //for each beverage(water coffee milk cacao) - try to make one as checking supplies,
-      //if available - create new Product with stats from supplies
+        Product p = null;
         try {
-            getSupplies();
-            Product p = new Product();
-          
-        } catch (Exception e){
-            
+            if (beverage.getName() == "Espresso") {
+                getSupplies();
+                if (availableCoffee < beverage.getCoffee()) {
+                    return null;
+                } else if (availableWater < beverage.getWater()) {
+                    return null;
+                } else {
+                    bc.useSupplies(beverage);
+                    if (beverage.getName() == "Espresso") {
+                        espressoQantity += 1;
+                        p = new Product(beverage, supportedLuck, espressoQantity);
+                    }
+                }
+            } else {return null;}
+        } catch (Exception e) {
+
         }
-        return null;
+        return p;
     }
 
     @Override
     public Container getSupplies() {
-        // TODO Auto-generated method stub
-        return null;
+        availableCoffee = bc.getCurrentCoffee();
+        availableWater = bc.getCurrentWater();
+        return bc;
     }
 
     @Override
     public void refill() {
-        if (autoRefill) {
-            this.water = water; // BASIC_CONTAINER_INITIAL_WATER
-        }
-        
     }
 
 }
