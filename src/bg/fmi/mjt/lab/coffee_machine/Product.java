@@ -9,8 +9,13 @@ public class Product {
     private String name;
     private int quantity;
     private boolean supported = false;
-
+    private int i=0;
     private ArrayList<String> lucks = new ArrayList<String>() {
+        /**
+         * 
+         */
+        private static final long serialVersionUID = 1L;
+
         {
             add("If at first you don't succeed call it version 1.0.");
             add("Today you will make magic happen!");
@@ -40,13 +45,11 @@ public class Product {
     public String getLuck() {
         String luck = null;
         if (supported) {
-            for (int i = 0; i <= lucks.size(); i++) {
-                if (i == lucks.size()) {
-                    i = 0;
-                    return luck = lucks.get(i);
-                }
-                return luck = lucks.get(i);
-            }
+            if ( i > lucks.size()){
+                i = 0;
+             }
+           luck = lucks.get(i);
+           i++;
         }
         return luck;
     }
