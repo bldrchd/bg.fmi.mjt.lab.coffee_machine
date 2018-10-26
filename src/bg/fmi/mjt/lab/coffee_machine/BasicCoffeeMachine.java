@@ -31,7 +31,7 @@ public class BasicCoffeeMachine implements CoffeeMachine {
                 } else {
                     bc.useSupplies(beverage);
                     if (beverage.getName() == "Espresso") {
-                        espressoQuantity += 1;
+                        espressoQuantity++;
                         p = new Product(beverage, supportedLuck, espressoQuantity);
                     }
                 }

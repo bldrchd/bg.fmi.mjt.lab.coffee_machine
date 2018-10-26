@@ -34,6 +34,6 @@ public class BasicContainer extends Container {
     
     public void useSupplies(Beverage beverage){
         this.water = this.water - beverage.getWater();
-        this.coffee = this.water - beverage.getCoffee();
+        this.coffee = this.coffee - beverage.getCoffee();
     }
 }
