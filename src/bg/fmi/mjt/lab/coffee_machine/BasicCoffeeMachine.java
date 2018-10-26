@@ -16,6 +16,7 @@ public class BasicCoffeeMachine implements CoffeeMachine {
     private double availableCoffee;
     private int espressoQuantity = 0;
     private BasicContainer bc;
+    boolean autoRefill = false;
 
     public BasicCoffeeMachine() {
         bc = new BasicContainer();
@@ -53,7 +54,12 @@ public class BasicCoffeeMachine implements CoffeeMachine {
     }
 
     public void refill() throws OperationNotSupportedException {
-        bc.refill();
+        if (autoRefill) {
+            this.availableWater = BasicContainer.BASIC_CONTAINER_INITIAL_WATER;
+            this.availableCoffee = BasicContainer.BASIC_CONTAINER_INITIAL_COFFEE;
+        } else {
+            throw new OperationNotSupportedException("Cannot Refil Containers.");
+        }
     }
 
 }

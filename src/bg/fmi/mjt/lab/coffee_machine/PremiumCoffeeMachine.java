@@ -24,7 +24,8 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
      *            are not enough ingredients to make the coffee drink
      */
     public PremiumCoffeeMachine(boolean autoRefill) {
-        pc = new PremiumContainer(autoRefill);
+        pc = new PremiumContainer();
+        this.autoRefill = autoRefill;
     }
 
     /**
@@ -95,7 +96,14 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
 
     @Override
     public void refill() throws OperationNotSupportedException {
-        pc.refill();
+        if (autoRefill) {
+            this.availableWater = PremiumContainer.PREMIUM_CONTAINER_INITIAL_WATER;
+            this.availableCoffee = PremiumContainer.PREMIUM_CONTAINER_INITIAL_COFFEE;
+            this.availableMilk = PremiumContainer.PREMIUM_CONTAINER_INITIAL_MILK;
+            this.availableCacao = PremiumContainer.PREMIUM_CONTAINER_INITIAL_CACAO;
+        } else {
+            throw new OperationNotSupportedException("Cannot Refil Containers.");
+        }
     }
 
 }

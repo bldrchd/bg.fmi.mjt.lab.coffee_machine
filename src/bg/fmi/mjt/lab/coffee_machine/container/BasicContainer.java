@@ -6,8 +6,8 @@ import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
 
 public class BasicContainer extends Container {
     
-    private static final double BASIC_CONTAINER_INITIAL_WATER = 600;
-    private static final double BASIC_CONTAINER_INITIAL_COFFEE = 600;
+    public static final double BASIC_CONTAINER_INITIAL_WATER = 600;
+    public static final double BASIC_CONTAINER_INITIAL_COFFEE = 600;
     double water = BASIC_CONTAINER_INITIAL_WATER;
     double coffee = BASIC_CONTAINER_INITIAL_COFFEE;
     private boolean autoRefill;
