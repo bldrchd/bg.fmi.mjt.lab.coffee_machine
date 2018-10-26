@@ -23,17 +23,13 @@ public class BasicCoffeeMachine implements CoffeeMachine {
             if (beverage.getName() == "Espresso") {
                 getSupplies();
                 if (availableCoffee < beverage.getCoffee()) {
-                    System.out.println("C:"+ availableCoffee);
                     return null;
                 } else if (availableWater < beverage.getWater()) {
-                    System.out.println("w:"+availableWater);
                     return null;
                 } else {
                     bc.useSupplies(beverage);
-                    if (beverage.getName() == "Espresso") {
                         espressoQuantity++;
                         p = new Product(beverage, supportedLuck, espressoQuantity);
-                    }
                 }
             } else {return null;}
         } catch (Exception e) {
@@ -46,8 +42,6 @@ public class BasicCoffeeMachine implements CoffeeMachine {
     public Container getSupplies() {
         availableCoffee = bc.getCurrentCoffee();
         availableWater = bc.getCurrentWater();
-        System.out.println("Co" + availableCoffee);
-        System.out.println("Wa"+ availableWater);
         return bc;
     }
 

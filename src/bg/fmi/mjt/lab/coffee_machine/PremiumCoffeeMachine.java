@@ -30,10 +30,10 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
      */
     public Product brew(Beverage beverage, int quantity) {
         Product p = null;
-        if (quantity <= 0 || quantity > 3) {
+        if (quantity < 1 || quantity > 3) {
             return null;
         } else {
-            for (int i = 0; i <= quantity; i++) {
+            for (int i = 0; i < quantity; i++) {
                 if (beverage.getName() == "Espresso") {
                     getSupplies();
                     if ((availableCoffee < beverage.getCoffee()) || (availableWater < beverage.getWater())) {
@@ -67,6 +67,7 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
     }
 
     public PremiumCoffeeMachine() {
+        pc = new PremiumContainer();
     }
 
     @Override
@@ -77,7 +78,9 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
     @Override
     public Container getSupplies() {
         availableCoffee = pc.getCurrentCoffee();
+        System.out.println("C:"+availableCoffee);
         availableWater = pc.getCurrentWater();
+        System.out.println("W:"+availableWater);
         availableMilk = pc.getCurrentMilk();
         availableCacao = pc.getCurrentCacao();
         return pc;
