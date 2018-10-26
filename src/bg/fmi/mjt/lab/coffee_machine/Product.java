@@ -8,8 +8,9 @@ public class Product {
 
     private String name;
     private int quantity;
-    private boolean supported = false;
+    private boolean supported;
     private int i=0;
+    private String luck;
     private ArrayList<String> lucks = new ArrayList<String>() {
         /**
          * 
@@ -31,6 +32,7 @@ public class Product {
     }
 
     public Product(Beverage beverage, boolean supported, int quantity){
+        setSupportedLuck(supported);
         setName(beverage.getName());
     }
     
@@ -46,15 +48,14 @@ public class Product {
     }
 
     public String getLuck() {
-        String luck = null;
         if (supported) {
             if ( i > lucks.size()){
                 i = 0;
              }
-           luck = lucks.get(i);
+           this.luck = lucks.get(i);
            i++;
         }
-        return luck;
+        return this.luck;
     }
 
     public boolean getSupportLuck() {

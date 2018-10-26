@@ -28,7 +28,7 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
      * If quantity is <= 0 or the quantity is not supported for the particular
      * Coffee Machine the method returns null
      */
-    public Product brew(Beverage beverage, int quantity) {
+    public Product brew(Beverage beverage, boolean supportedLuck, int quantity) {
         Product p = null;
         if (quantity < 1 || quantity > 3) {
             return null;
@@ -72,15 +72,13 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
 
     @Override
     public Product brew(Beverage beverage) {
-       return brew(beverage, 1);
+       return brew(beverage, supportedLuck, 1);
     }
 
     @Override
     public Container getSupplies() {
         availableCoffee = pc.getCurrentCoffee();
-        System.out.println("C:"+availableCoffee);
         availableWater = pc.getCurrentWater();
-        System.out.println("W:"+availableWater);
         availableMilk = pc.getCurrentMilk();
         availableCacao = pc.getCurrentCacao();
         return pc;
