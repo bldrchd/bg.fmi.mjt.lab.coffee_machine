@@ -7,4 +7,3 @@ tmp/**
 .classpath
 .gitignore
 *javaw_*.log
-bin/
