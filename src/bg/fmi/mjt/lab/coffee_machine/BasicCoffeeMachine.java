@@ -4,6 +4,11 @@ import bg.fmi.mjt.lab.coffee_machine.container.BasicContainer;
 import bg.fmi.mjt.lab.coffee_machine.container.Container;
 import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
 
+import javax.naming.OperationNotSupportedException;
+
+import bg.fmi.mjt.lab.coffee_machine.CoffeeMachine;
+import bg.fmi.mjt.lab.coffee_machine.Product;
+
 public class BasicCoffeeMachine implements CoffeeMachine {
 
     private boolean supportedLuck = false;
@@ -28,10 +33,12 @@ public class BasicCoffeeMachine implements CoffeeMachine {
                     return null;
                 } else {
                     bc.useSupplies(beverage);
-                        espressoQuantity++;
-                        p = new Product(beverage, supportedLuck, espressoQuantity);
+                    espressoQuantity++;
+                    p = new Product(beverage, supportedLuck, espressoQuantity);
                 }
-            } else {return null;}
+            } else {
+                return null;
+            }
         } catch (Exception e) {
 
         }
@@ -45,8 +52,8 @@ public class BasicCoffeeMachine implements CoffeeMachine {
         return bc;
     }
 
-    @Override
-    public void refill() {
+    public void refill() throws OperationNotSupportedException {
+        bc.refill();
     }
 
 }

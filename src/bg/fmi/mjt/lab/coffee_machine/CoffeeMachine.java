@@ -1,5 +1,7 @@
 package bg.fmi.mjt.lab.coffee_machine;
 
+import javax.naming.OperationNotSupportedException;
+
 import bg.fmi.mjt.lab.coffee_machine.container.Container;
 import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
 
@@ -18,6 +20,7 @@ public interface CoffeeMachine {
 
     /**
     * Reffils the Container of the Coffee Machine with its default values
+     * @throws OperationNotSupportedException 
     */
-    public void refill();
+    public void refill() throws OperationNotSupportedException;
 }

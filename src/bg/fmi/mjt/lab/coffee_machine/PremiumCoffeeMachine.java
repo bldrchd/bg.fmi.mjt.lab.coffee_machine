@@ -1,5 +1,7 @@
 package bg.fmi.mjt.lab.coffee_machine;
 
+import javax.naming.OperationNotSupportedException;
+
 import bg.fmi.mjt.lab.coffee_machine.container.Container;
 import bg.fmi.mjt.lab.coffee_machine.container.PremiumContainer;
 import bg.fmi.mjt.lab.coffee_machine.supplies.Beverage;
@@ -22,13 +24,15 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
      *            are not enough ingredients to make the coffee drink
      */
     public PremiumCoffeeMachine(boolean autoRefill) {
+        pc = new PremiumContainer(autoRefill);
     }
 
     /**
      * If quantity is <= 0 or the quantity is not supported for the particular
      * Coffee Machine the method returns null
+     * @throws OperationNotSupportedException 
      */
-    public Product brew(Beverage beverage, boolean supportedLuck, int quantity) {
+    public Product brew(Beverage beverage, boolean supportedLuck, int quantity) throws OperationNotSupportedException {
         Product p = null;
         if (quantity < 1 || quantity > 3) {
             return null;
@@ -72,7 +76,12 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
 
     @Override
     public Product brew(Beverage beverage) {
-       return brew(beverage, supportedLuck, 1);
+       try {
+        return brew(beverage, supportedLuck, 1);
+    } catch (OperationNotSupportedException one) {
+        one.printStackTrace();
+    }
+    return null;
     }
 
     @Override
@@ -85,7 +94,7 @@ public class PremiumCoffeeMachine implements CoffeeMachine {
     }
 
     @Override
-    public void refill() {
+    public void refill() throws OperationNotSupportedException {
         pc.refill();
     }
 
